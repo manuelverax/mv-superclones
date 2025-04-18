@@ -1,10 +1,17 @@
-// pages/index.tsx
+'use client';
 
 import Head from "next/head";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
+  const scrollToModels = () => {
+    const section = document.getElementById("modelos");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <Head>
@@ -40,7 +47,11 @@ export default function Home() {
             <p className="text-lg md:text-2xl text-gray-300 mb-6">
               Relojes superclone de la más alta calidad. Diseñados para impresionar. Fabricados para durar.
             </p>
-            <Button className="bg-white text-black px-6 py-3 rounded-2xl shadow hover:bg-gray-200 transition">
+            <Button
+              variant="white"
+              onClick={scrollToModels}
+              className="hover:bg-gray-200 transition duration-300"
+            >
               Ver colección
             </Button>
           </div>
@@ -52,24 +63,24 @@ export default function Home() {
           <p className="text-lg text-gray-400 mb-10 max-w-xl mx-auto">
             El lujo no debería costar una fortuna. Nuestros relojes superclones combinan presencia, calidad y confianza.
           </p>
-          <div className="flex flex-col md:flex-row justify-center gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <Image src="/icon-lock.svg" alt="Seguridad" width={50} height={50} />
-              <p className="mt-4">Seguridad: Usa tu reloj sin miedo a robos.</p>
+              <Image src="/icon-lock.svg" alt="Seguridad" width={48} height={48} className="mx-auto mb-4" />
+              <p className="text-white">Seguridad: Usa tu reloj sin miedo a robos.</p>
             </div>
             <div>
-              <Image src="/icon-quality.svg" alt="Calidad" width={50} height={50} />
-              <p className="mt-4">Calidad premium: Detalles idénticos a los originales.</p>
+              <Image src="/icon-quality.svg" alt="Calidad" width={48} height={48} className="mx-auto mb-4" />
+              <p className="text-white">Calidad premium: Detalles idénticos a los originales.</p>
             </div>
             <div>
-              <Image src="/icon-style.svg" alt="Estilo" width={50} height={50} />
-              <p className="mt-4">Estilo sin límites: Impecable apariencia por menos.</p>
+              <Image src="/icon-style.svg" alt="Estilo" width={48} height={48} className="mx-auto mb-4" />
+              <p className="text-white">Estilo sin límites: Impecable apariencia por menos.</p>
             </div>
           </div>
         </section>
 
         {/* Modelos destacados */}
-        <section className="py-20 px-6 bg-black text-center">
+        <section id="modelos" className="py-20 px-6 bg-black text-center">
           <h2 className="text-3xl font-semibold mb-10">Modelos más deseados</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -105,11 +116,11 @@ export default function Home() {
             Entregas personales en Caracas. Envíos a toda Venezuela. Aceptamos USDT, Zelle, Pago Móvil, Efectivo.
           </p>
           <a
-            href="https://wa.me/584141234567?text=Hola%20Manuel%2C%20quiero%20consultar%20por%20tu%20colecci%C3%B3n%20de%20relojes%20superclones."
+            href="https://wa.me/584141333305?text=Hola%20Manuel%2C%20quiero%20consultar%20por%20tu%20colecci%C3%B3n%20de%20relojes%20superclones."
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button className="text-white bg-green-600 hover:bg-green-700">
+            <Button className="text-white bg-green-600 hover:bg-green-700 transition duration-300">
               Contactar por WhatsApp
             </Button>
           </a>
