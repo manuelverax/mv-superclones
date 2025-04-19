@@ -36,14 +36,15 @@ export default function Home() {
             loop
             muted
             playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover opacity-20 z-0"
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-75 z-0"
           >
             <source src="/luxury-bg.mp4" type="video/mp4" />
           </video>
           <div className="relative z-10">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              El lujo que mereces, sin pagar el precio.
-            </h1>
+          <h1 className="text-[56px] leading-[56px] font-sans">
+  El lujo que mereces, sin pagar el precio.
+</h1>
+
             <p className="text-lg md:text-2xl text-gray-300 mb-6">
               Relojes superclone de la más alta calidad. Diseñados para impresionar. Fabricados para durar.
             </p>
