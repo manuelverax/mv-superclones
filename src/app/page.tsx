@@ -3,7 +3,40 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ModelVideoCard } from "@/components/ModelVideoCard";
+import ModelVideoCard from "@/components/ModelVideoCard";
+
+const models = [
+  {
+    name: "Rolex Submariner",
+    videoSrc: "/videos/rolex-submariner.webm",
+    thumbnail: "/thumbnails/rolex-submariner.jpg"
+  },
+  {
+    name: "Patek Philippe Nautilus",
+    videoSrc: "/videos/patek-nautilus.webm",
+    thumbnail: "/thumbnails/patek-nautilus.jpg"
+  },
+  {
+    name: "Audemars Piguet Royal Oak",
+    videoSrc: "/videos/ap-royal-oak.webm",
+    thumbnail: "/thumbnails/ap-royal-oak.jpg"
+  },
+  {
+    name: "Rolex Daytona",
+    videoSrc: "/videos/rolex-daytona.webm",
+    thumbnail: "/thumbnails/rolex-daytona.jpg"
+  },
+  {
+    name: "Patek Philippe Aquanaut",
+    videoSrc: "/videos/patek-aquanaut.webm",
+    thumbnail: "/thumbnails/patek-aquanaut.jpg"
+  },
+  {
+    name: "Hublot Big Bang",
+    videoSrc: "/videos/hublot-big-bang.webm",
+    thumbnail: "/thumbnails/hublot-big-bang.jpg"
+  },
+];
 
 export default function Home() {
   const scrollToModels = () => {
@@ -83,21 +116,18 @@ export default function Home() {
 
         {/* Modelos destacados */}
         <section id="modelos" className="py-20 px-6 bg-black text-center">
-          <h2 className="text-3xl font-semibold mb-10">Modelos más deseados</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+        <h2 className="text-3xl font-semibold mb-10">Modelos más deseados</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {models.map((model) => (
             <ModelVideoCard
-              title="Rolex Submariner"
-              thumbnail="/thumbnails/rolex-submariner.jpg"
-              videoSrc="/videos/rolex-submariner.webm"
+              key={model.name}
+              name={model.name}
+              videoSrc={model.videoSrc}
+              thumbnail={model.thumbnail}
             />
-            <ModelVideoCard
-              title="Patek Philippe Nautilus"
-              thumbnail="/thumbnails/patek-nautilus.jpg"
-              videoSrc="/videos/patek-nautilus.webm"
-            />
-            {/* Puedes seguir agregando más aquí */}
-          </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
         {/* Formulario de modelos solicitados */}
         <section className="py-20 px-6 bg-zinc-900 text-center">
