@@ -7,8 +7,8 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-            sans: ['"Lato Thin"', 'sans-serif'],
-          }
+          sans: ['var(--font-sans)', 'sans-serif'], // esto usa la variable personalizada que pusiste
+        },
       },
     },
     plugins: [],
