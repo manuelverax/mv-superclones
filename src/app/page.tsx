@@ -3,6 +3,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { ModelVideoCard } from "@/components/ModelVideoCard";
 
 export default function Home() {
   const scrollToModels = () => {
@@ -41,9 +42,9 @@ export default function Home() {
             <source src="/luxury-bg.mp4" type="video/mp4" />
           </video>
           <div className="relative z-10">
-          <h1 className="text-[56px] leading-[56px] font-sans">
-  El lujo que mereces, sin pagar el precio.
-</h1>
+            <h1 className="text-[56px] leading-[56px] font-sans">
+              El lujo que mereces, sin pagar el precio.
+            </h1>
 
             <p className="text-lg md:text-2xl text-gray-300 mb-6">
               Relojes superclone de la más alta calidad. Diseñados para impresionar. Fabricados para durar.
@@ -84,22 +85,58 @@ export default function Home() {
         <section id="modelos" className="py-20 px-6 bg-black text-center">
           <h2 className="text-3xl font-semibold mb-10">Modelos más deseados</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { name: "Rolex Submariner", img: "/rolex-submariner.jpg" },
-              { name: "Patek Philippe Nautilus", img: "/patek-nautilus.jpg" },
-              { name: "Audemars Piguet Royal Oak", img: "/ap-royal-oak.jpg" },
-              { name: "Rolex Daytona", img: "/rolex-daytona.jpg" },
-              { name: "Patek Philippe Aquanaut", img: "/patek-aquanaut.jpg" },
-              { name: "Hublot Big Bang", img: "/hublot-big-bang.jpg" }
-            ].map((model) => (
-              <div key={model.name} className="bg-zinc-800 rounded-xl overflow-hidden shadow-lg">
-                <Image src={model.img} alt={model.name} width={600} height={600} className="w-full h-80 object-cover" />
-                <h3 className="text-xl font-medium my-4">{model.name}</h3>
-                <Button className="mb-4">Consultar disponibilidad</Button>
-              </div>
-            ))}
+            <ModelVideoCard
+              title="Rolex Submariner"
+              thumbnail="/thumbnails/rolex-submariner.jpg"
+              videoSrc="/videos/rolex-submariner.webm"
+            />
+            <ModelVideoCard
+              title="Patek Philippe Nautilus"
+              thumbnail="/thumbnails/patek-nautilus.jpg"
+              videoSrc="/videos/patek-nautilus.webm"
+            />
+            {/* Puedes seguir agregando más aquí */}
           </div>
         </section>
+
+        {/* Formulario de modelos solicitados */}
+        <section className="py-20 px-6 bg-zinc-900 text-center">
+          <h2 className="text-3xl font-semibold mb-4">¿No ves tu modelo?</h2>
+          <p className="text-lg text-gray-400 mb-6 max-w-xl mx-auto">
+            Cuéntanos cuál reloj deseas. Nos ayuda a ampliar la colección y priorizar los más solicitados.
+          </p>
+
+          <form
+            action="https://formsubmit.co/tuemail@correo.com"
+            method="POST"
+            className="max-w-md mx-auto grid gap-4"
+          >
+            <input
+              type="text"
+              name="modelo"
+              required
+              placeholder="Modelo de reloj (ej: AP Code 11.59)"
+              className="px-4 py-3 rounded-xl bg-zinc-800 text-white placeholder-gray-400 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            <input
+              type="text"
+              name="contacto"
+              placeholder="Tu WhatsApp o email (opcional)"
+              className="px-4 py-3 rounded-xl bg-zinc-800 text-white placeholder-gray-400 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            {/* Seguridad extra de formsubmit */}
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://mv-superclones.vercel.app/thank-you" />
+
+            <button
+              type="submit"
+              className="bg-white text-black font-semibold py-3 rounded-xl hover:bg-gray-200 transition"
+            >
+              Enviar modelo
+            </button>
+          </form>
+        </section>
+
 
         {/* Comparativa */}
         <section className="py-20 px-6 bg-zinc-900 text-center">
