@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Play } from "lucide-react";
 
 interface Props {
   name: string;
@@ -12,10 +13,32 @@ interface Props {
 
 export default function ModelVideoCard({ name, videoSrc, thumbnail }: Props) {
   const [play, setPlay] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth < 768); // móvil si < 768px (Tailwind md breakpoint)
+    }
+  }, []);
 
   return (
-    <div className="bg-zinc-800 rounded-xl overflow-hidden shadow-lg">
-      {play ? (
+    <div className="bg-zinc-800 rounded-xl overflow-hidden shadow-lg relative">
+      {play && isMobile ? (
+        <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
+          <video
+            src={videoSrc}
+            controls
+            autoPlay
+            className="h-screen w-full object-cover"
+          />
+          <Button
+            onClick={() => setPlay(false)}
+            className="absolute top-4 right-4 z-50 bg-white text-black"
+          >
+            ✕
+          </Button>
+        </div>
+      ) : play && !isMobile ? (
         <video
           src={videoSrc}
           controls
@@ -33,22 +56,9 @@ export default function ModelVideoCard({ name, videoSrc, thumbnail }: Props) {
           />
           <button
             onClick={() => setPlay(true)}
-            className="absolute inset-0 flex items-center justify-center"
+            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white text-black rounded-full p-2 z-10"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-12 h-12 text-white bg-black/60 rounded-full p-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8 5v14l11-7z"
-              />
-            </svg>
+            <Play className="w-6 h-6" />
           </button>
         </div>
       )}
