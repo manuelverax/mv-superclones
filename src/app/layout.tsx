@@ -1,4 +1,5 @@
 import "./globals.css";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Manuel Vera | Superclones",
@@ -7,12 +8,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="es">
-      <body className="antialiased font-sans bg-background text-foreground">
+      <body className="font-sans antialiased bg-background text-foreground">
         {children}
       </body>
     </html>
